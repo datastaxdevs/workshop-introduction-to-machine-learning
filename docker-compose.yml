@@ -1,0 +1,11 @@
+version: '3'
+services:
+  jupyter: # Jupyter Notebook
+    build: ./pyspark-cassandra
+    volumes:
+      - ./jupyter:/home/jovyan
+    ports:
+      - "8888:8888" # Exposes port to be available externally
+    environment:
+      PYSPARK_SUBMIT_ARGS: '--packages com.datastax.spark:spark-cassandra-connector_2.11:2.5.1 pyspark-shell'
+    command: start-notebook.sh --NotebookApp.password='sha1:a536879cf56d:a895a85b375e09f7d6a8211cdcd0e87f16aa4e60'
