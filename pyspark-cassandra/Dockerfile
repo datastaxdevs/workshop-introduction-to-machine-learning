@@ -1,6 +1,7 @@
 FROM jupyter/pyspark-notebook:04f7f60d34a6
 USER root
-RUN pip install cassandra-driver==3.24.0
+RUN pip install cassandra-driver==3.25.0
+RUN pip install python-dotenv==0.20.0
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 WORKDIR /home/jovyan/.ivy2/jars/
