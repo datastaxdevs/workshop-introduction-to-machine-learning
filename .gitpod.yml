@@ -8,8 +8,10 @@ tasks:
     #   npm install -g netlify-cli
     #   npm install
     init: |
-      # an undesired fix for "permission errors" on docker, see https://github.com/jupyter/docker-stacks/issues/114 - should improve this!
+      # an undesirable fix for "permission errors" on docker, see https://github.com/jupyter/docker-stacks/issues/114 - should improve this!
       chmod 777 jupyter
+      chmod 777 jupyter/secureconnect
+      chmod 777 jupyter/*.ipynb
       #
       # get cqlsh
       mkdir bin
