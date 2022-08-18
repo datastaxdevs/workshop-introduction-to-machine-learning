@@ -1,36 +1,19 @@
 tasks:
   - name: main-console
-    # before: |
-    #   cd graphql-client-examples
-    #   nvm install 16.13.0
-    #   npm install -g npm@latest
-    #   npm install astra-setup
-    #   npm install -g netlify-cli
-    #   npm install
     init: |
       # an undesirable fix for "permission errors" on docker, see https://github.com/jupyter/docker-stacks/issues/114 - should improve this!
       chmod 777 jupyter
       chmod 777 jupyter/secureconnect
       chmod 777 jupyter/*.ipynb
       #
-      # get cqlsh
-      mkdir bin
-      curl -L https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz -o bin/cqlsh-astra.tar.gz
-      tar -xvf bin/cqlsh-astra.tar.gz -C bin/
-      rm -f bin/cqlsh-astra.tar.gz
-      # get dsbulk
-      curl -L https://downloads.datastax.com/dsbulk/dsbulk-1.9.1.tar.gz -o bin/dsbulk-1.9.1.tar.gz
-      tar -xvf bin/dsbulk-1.9.1.tar.gz -C bin/
-      rm -f bin/dsbulk-1.9.1.tar.gz
-      # launch docker containers
-      docker-compose up -d
+      #
+      ./init_tools.sh
     command: |
       clear
       ./setup.sh
       # echo -e "\n\n\t\t** PLEASE LAUNCH ./setup.sh WHEN READY **\n\n"
 ports:
   - port: 8888
-    # onOpen: open-browser
     visibility: public
 github:
   prebuilds:

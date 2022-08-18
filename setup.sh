@@ -9,7 +9,7 @@ read -p "Enter Client ID from token: " CLIENT_ID
 read -sp "Enter Client Secret from token : " CLIENT_SECRET
 echo ""
 
-read -p "** Please drag-and-drop your secure bundle zip file to jupyter/secureconnect NOW. Press Enter when ready **" DUMMY
+read -p "** Please drag-and-drop (i.e. copy) your secure bundle zip file to jupyter/secureconnect NOW. Press Enter when ready **" DUMMY
 
 DEFAULT_SECURE_BUNDLE=`ls jupyter/secureconnect/*.zip | head -n 1`
 DEFAULT_SECURE_BUNDLE=${DEFAULT_SECURE_BUNDLE:-jupyter/secureconnect/secure-connect-workshops.zip}
@@ -28,8 +28,13 @@ cat jupyter/.env.sample \
   | sed "s/machine_learning/${KEYSPACE}/g" \
   > jupyter/.env
 
-./initialize/initialize.sh
+# ./initialize/initialize.sh
 
 JUPYTER_URL="$(gp url 8888)"
-echo -e "\n\n\n\n\n\t\t** OPENING JUPYTER IN NEW TAB. PLEASE CHECK YOUR POP-UP BLOCKER **\n";
-gp preview --external ${JUPYTER_URL}
+if [ -n "${JUPYTER_URL}" ]; then
+  echo -e "\n\n\n\n\n\t\t** OPENING JUPYTER IN NEW TAB. PLEASE CHECK YOUR POP-UP BLOCKER **\n";
+  gp preview --external ${JUPYTER_URL};
+else
+  JUPYTER_URL="http://localhost:8888/"
+  echo -e "\n\n\n\n\n\t\t** PLEASE POINT YOUR BROWSER TO ${JUPYTER_URL} **\n";
+fi

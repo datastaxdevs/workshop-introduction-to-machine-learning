@@ -19,13 +19,14 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 2. [Frequently asked questions](#2-frequently-asked-questions)
 3. [Materials for the Session](#3-materials-for-the-session)
 4. [Create your Database](#4-create-your-astra-db-instance)
-5. [Algo1](#)
-6. [Algo2](#)
-7. [Algo3](#)
-8. [Algo4](#)
-9. [Algo5](#)
-10. [Homework](#10-homework)
-11. [What's NEXT ](#1-whats-next-)
+5. [Setup](#5-setup)
+6. [Algo1](#)
+7. [Algo2](#)
+8. [Algo3](#)
+9. [Algo4](#)
+10. [Algo5](#)
+11. [Homework](#11-homework)
+12. [What's NEXT ](#12-whats-next-)
 <p><br/>
 
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
@@ -89,6 +90,13 @@ we have you covered. In this repository, you'll find everything you need for thi
 - [Discord chat](https://dtsx.io/discord)
 - [Questions and Answers](https://community.datastax.com/)
 
+### Requirements
+
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [DataStax Astra Registration](http://astra.datastax.com) (_sign up with the email you used to register for the workshop!_)
+* [Docker](https://www.docker.com/products/docker-desktop)
+* [Docker-compose](https://docs.docker.com/compose/install/) (_included with Docker Desktop for Mac and Windows installs_)
+
 ----
 
 # 🏁 Start Hands-on
@@ -114,21 +122,11 @@ save it somewhere safe, as it will be needed to later in others workshop (In par
 
 The status will change from `Pending` to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
+Then go to the Connect tab for your database and get a **Secure Connect Bundle**, as described [at this link](https://awesome-astra.github.io/docs/pages/astra/download-scb/). You will need it later.
+
 [🏠 Back to Table of Contents](#-table-of-content)
 
-
-## 5. Algo1
-
-TBD
-
-## Requirements
-
-* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [DataStax Astra Registration](http://astra.datastax.com) (_sign up with the email you used to register for the workshop!_)
-* [Docker](https://www.docker.com/products/docker-desktop)
-* [Docker-compose](https://docs.docker.com/compose/install/) (_included with Docker Desktop for Mac and Windows installs_)
-
-## Installation
+## Start
 
 ```
 git clone https://github.com/riptano/machine-learning-workshop-astra-online.git
@@ -138,12 +136,28 @@ docker-compose up -d
 
 ## Setup
 
-- Download the [Secure Connect Bundle](https://docs.datastax.com/en/astra/aws/doc/dscloud/astra/dscloudObtainingCredentials.html) for your Astra Database
-- Move the Secure Connect Bundle to [./jupyter/secureconnect](./jupyter/secureconnect)  
-- For the Spark labs, access Jupyter Notebooks: http://localhost:8888 password: `datastax`
+We suggest to use [Gitpod](https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/stefano) (right-click on link and open in new tab NOW), but you can also run everything locally.
+In the latter case, you may need to know what you are doing - we won't be able to troubleshoot live.
 
-You may need to use some custom IP instead of `localhost` if you use docker-for-mac, docker-for-windows or similar installation.
+If you are on Gitpod, simply follow the on-screen instructions to get everything running.
 
-## Known Issues
+<details><summary>Steps for running locally (click to show)</summary>
 
-In some cases executing the exercises may lead to memory issues, especially on weaker or non-Linux machines due to docker limitations on memory. If you have any issues with exercises after the first few, try to clean up and start again `docker-compose kill && docker-compose down && docker-compose up -d`. You may need to repeat steps of the notebook you were working on.
+- Clone the repo, `cd` into it and launch `./init_tools.sh` (to get the required tools ready and `docker-compose` up and running).
+- Once that is finished, launch `./setup.sh` and follow the instructions.
+
+> You may need to use some custom IP instead of `localhost` if you
+> use docker-for-mac, docker-for-windows or similar installation.
+
+> _Known Issue_: in some cases executing the exercises may lead to memory issues, especially
+> on weaker or non-Linux machines due to docker limitations on memory. If you have any
+> issues with exercises after the first few, try to clean up and start again
+> `docker-compose kill && docker-compose down && docker-compose up -d`.
+> You may need to repeat steps of the notebook you were working on.
+
+</details>
+
+## 6. Algo1
+
+TBD
+

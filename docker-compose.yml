@@ -9,6 +9,6 @@ services:
     environment:
       PYSPARK_SUBMIT_ARGS: '--packages com.datastax.spark:spark-cassandra-connector_2.11:2.5.1 pyspark-shell'
     # see https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html?highlight=start-notebook.sh#jupyter-server-options
-    # 'mlrules'
-    command: start-notebook.sh --NotebookApp.password='argon2:$argon2id$v=19$m=10240,t=10,p=8$mF0xkqTBjViX+aVK4Quyyw$uq5MFW+wTsffQhGJ2Z5Bwr+coAOX5iSVj5pxkkpsMUo'
+    # 'mlrules' (better to stick to sha1 to avoid escaping those pesky literal dollar signs, see https://stackoverflow.com/questions/40619582/how-can-i-escape-a-dollar-sign-in-a-docker-compose-file)
+    command: start-notebook.sh --NotebookApp.password='sha1:7b14dcc0fcd0:a01b354f5bb59e283527727811642bcc3dfb4b6c'
     # command: start-notebook.sh --NotebookApp.password='sha1:a536879cf56d:a895a85b375e09f7d6a8211cdcd0e87f16aa4e60'
