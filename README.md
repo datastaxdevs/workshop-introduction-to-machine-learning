@@ -140,7 +140,6 @@ docker-compose up -d
 
 - Download the [Secure Connect Bundle](https://docs.datastax.com/en/astra/aws/doc/dscloud/astra/dscloudObtainingCredentials.html) for your Astra Database
 - Move the Secure Connect Bundle to [./jupyter/secureconnect](./jupyter/secureconnect)  
-- For the Cassandra lab, access [DataStax Developer Studio on Astra](https://docs.datastax.com/en/astra/aws/doc/dscloud/astra/dscloudConnectStudio.html)
 - For the Spark labs, access Jupyter Notebooks: http://localhost:8888 password: `datastax`
 
 You may need to use some custom IP instead of `localhost` if you use docker-for-mac, docker-for-windows or similar installation.

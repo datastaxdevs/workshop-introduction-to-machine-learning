@@ -9,23 +9,12 @@ source ./jupyter/.env
 # make create-tables script
 cat initialize/create_tables.cql.template | sed "s/%KEYSPACE_NAME%/${ASTRA_DB_KEYSPACE}/g" > initialize/create_tables.cql
 
-# get cqlsh
-mkdir bin
-curl -L https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz -o bin/cqlsh-astra.tar.gz
-tar -xvf bin/cqlsh-astra.tar.gz -C bin/
-rm -f bin/cqlsh-astra.tar.gz
-
 # run create-tables script
 ./bin/cqlsh-astra/bin/cqlsh \
   -u "${ASTRA_DB_CLIENT_ID}" \
   -p "${ASTRA_DB_CLIENT_SECRET}" \
   -b "jupyter/${ASTRA_DB_SECURE_BUNDLE_PATH}" \
   -f initialize/create_tables.cql
-
-# get dsbulk
-curl -L https://downloads.datastax.com/dsbulk/dsbulk-1.9.1.tar.gz -o bin/dsbulk-1.9.1.tar.gz
-tar -xvf bin/dsbulk-1.9.1.tar.gz -C bin/
-rm -f bin/dsbulk-1.9.1.tar.gz
 
 # dsbulk calls to populate tables
 ./bin/dsbulk-1.9.1/bin/dsbulk \
