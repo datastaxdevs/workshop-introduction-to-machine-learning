@@ -8,6 +8,9 @@ tasks:
     #   npm install -g netlify-cli
     #   npm install
     init: |
+      # an undesired fix for "permission errors" on docker, see https://github.com/jupyter/docker-stacks/issues/114 - should improve this!
+      chmod 777 jupyter
+      #
       # get cqlsh
       mkdir bin
       curl -L https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz -o bin/cqlsh-astra.tar.gz
@@ -21,10 +24,11 @@ tasks:
       docker-compose up -d
     command: |
       clear
-      echo -e "\n\n\t\t** PLEASE LAUNCH ./setup.sh WHEN READY **\n\n"
+      ./setup.sh
+      # echo -e "\n\n\t\t** PLEASE LAUNCH ./setup.sh WHEN READY **\n\n"
 ports:
   - port: 8888
-    onOpen: open-browser
+    # onOpen: open-browser
     visibility: public
 github:
   prebuilds:

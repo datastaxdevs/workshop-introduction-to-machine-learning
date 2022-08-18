@@ -11,6 +11,7 @@ echo ""
 
 DEFAULT_SECURE_BUNDLE=`ls jupyter/secureconnect/*.zip | head -n 1`
 DEFAULT_SECURE_BUNDLE=${DEFAULT_SECURE_BUNDLE:-jupyter/secureconnect/secure-connect-workshops.zip}
+echo "Please drag-and-drop your secure bundle zip file to jupyter/secureconnect NOW"
 read -p "Enter secure-connect-bundle location [${DEFAULT_SECURE_BUNDLE}]: " SECURE_BUNDLE
 SECURE_BUNDLE=${SECURE_BUNDLE:-${DEFAULT_SECURE_BUNDLE}}
 
