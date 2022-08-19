@@ -1,5 +1,6 @@
 .env
 .cache/
+__pycache__
 .jupyter/
 .ipynb_checkpoints/
 .ipython/
