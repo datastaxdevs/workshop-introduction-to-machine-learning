@@ -126,20 +126,17 @@ Then go to the Connect tab for your database and get a **Secure Connect Bundle**
 
 [🏠 Back to Table of Contents](#-table-of-content)
 
-## Start
-
-```
-git clone https://github.com/riptano/machine-learning-workshop-astra-online.git
-cd machine-learning-workshop-astra-online
-docker-compose up -d
-```
-
 ## Setup
 
 We suggest to use [Gitpod](https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/stefano) (right-click on link and open in new tab NOW), but you can also run everything locally.
 In the latter case, you may need to know what you are doing - we won't be able to troubleshoot live.
 
-If you are on Gitpod, simply follow the on-screen instructions to get everything running.
+If you are on Gitpod, simply follow the on-screen instructions to get everything running:
+
+- Enter the required information (Astra Token ID, Token Secret and keyspace name)
+- When asked, drag-and-drop (or copy) the Secure bundle to the required destination
+- Eventually the Gitpod console will spawn a new tab with the Jupter UI running (check your pop-up blocker to let it through)
+- The password for the notebooks is `mlrules`
 
 <details><summary>Steps for running locally (click to show)</summary>
 

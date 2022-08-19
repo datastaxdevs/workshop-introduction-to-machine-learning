@@ -33,6 +33,7 @@ cat jupyter/.env.sample \
 JUPYTER_URL="$(gp url 8888)"
 if [ -n "${JUPYTER_URL}" ]; then
   echo -e "\n\n\n\n\n\t\t** OPENING JUPYTER IN NEW TAB. PLEASE CHECK YOUR POP-UP BLOCKER **\n";
+  echo -e "\t\t** TARGET URL: ${JUPYTER_URL} **";
   gp preview --external ${JUPYTER_URL};
 else
   JUPYTER_URL="http://localhost:8888/"
