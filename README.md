@@ -20,13 +20,9 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 3. [Materials for the Session](#3-materials-for-the-session)
 4. [Create your Database](#4-create-your-astra-db-instance)
 5. [Setup](#5-setup)
-6. [Algo1](#)
-7. [Algo2](#)
-8. [Algo3](#)
-9. [Algo4](#)
-10. [Algo5](#)
-11. [Homework](#11-homework)
-12. [What's NEXT ](#12-whats-next-)
+6. [Algorithms](#6-algorithms)
+7. [Homework](#7-homework)
+8. [What's NEXT](#8-whats-next-)
 <p><br/>
 
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
@@ -49,10 +45,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 <details>
 <summary><b> 1️⃣ Can I run this workshop on my computer?</b></summary>
 <hr>
-<p>There is nothing preventing you from running the workshop on your own machine. If you do so, you will need the following:
-<ol>
-<li><b>git</b> installed on your local system
-</ol>
+<p>There is nothing preventing you from running the workshop on your own machine. If you do so, you will need: `git`, `docker`, `docker-compose`
 </p>
 In this readme, we try to provide instructions for local development as well - but keep in mind that the main focus is development on Gitpod, hence <strong>we can't guarantee live support</strong> about local development in order to keep on track with the schedule. However, we will do our best to give you the info you need to succeed.
 </details>
@@ -63,7 +56,6 @@ In this readme, we try to provide instructions for local development as well - b
 <ul>
 <li>You will need enough *real estate* on screen, we will ask you to open a few windows and it would not fit on mobiles (tablets should be OK)
 <li>You will need an Astra account: don't worry, we'll work through that in the following
-<li>As "Intermediate level" we expect you to know what java and Spring are. 
 </ul>
 </p>
 </details>
@@ -77,7 +69,7 @@ In this readme, we try to provide instructions for local development as well - b
 <details>
 <summary><b> 4️⃣ Will I get a certificate if I attend this workshop?</b></summary>
 <hr>
-Attending the session is not enough. You need to complete the homework detailed below and you will get a nice badge that you can share on linkedin or anywhere else *(open badge specification)*
+Attending the session is not enough. You need to complete the homework detailed below and you will get a nice badge that you can share on linkedin or anywhere else *(open badge specification)*.
 </details>
 <p/>
 
@@ -126,7 +118,7 @@ Then go to the Connect tab for your database and get a **Secure Connect Bundle**
 
 [🏠 Back to Table of Contents](#-table-of-content)
 
-## Setup
+## 5. Setup
 
 We suggest to use [Gitpod](https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/stefano) (right-click on link and open in new tab NOW), but you can also run everything locally.
 In the latter case, you may need to know what you are doing - we won't be able to troubleshoot live.
@@ -154,7 +146,17 @@ If you are on Gitpod, simply follow the on-screen instructions to get everything
 
 </details>
 
-## 6. Algo1
+## 6. Algorithms
 
-TBD
+The main Jupyter web interface will list five numbered notebooks available.
+Each one illustrates a key algorithm in Machine Learning.
 
+Click a notebook to open it in a new tab, then you can run all code cells
+sequentially by clicking on them and hitting `Ctrl + Enter`.
+Watch each code cell execute (its numbering will display `[*]` while running)
+and, when it finishes, move on to the next.
+
+
+## 7. Homework
+
+## 8. What's NEXT
