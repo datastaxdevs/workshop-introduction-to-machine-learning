@@ -187,7 +187,7 @@ There's plenty to dig into!
 
 Don't forget to [submit your homework](#7-homework) and be awarded a nice verified badge!
 
-![Badge](images/intro-ml-badge.png)
+<img src="images/intro-ml-badge.png?raw=true" width="150" align="left" />
 
 **... and see you at our next workshop!**
 
