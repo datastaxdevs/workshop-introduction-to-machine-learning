@@ -50,7 +50,7 @@ cat initialize/create_tables.cql.template | sed "s/%KEYSPACE_NAME%/${ASTRA_DB_KE
   -delim ',' \
   -m "userid,movieid,rating,timestamp" \
   -header false \
-  -k machine_learning \
+  -k "${ASTRA_DB_KEYSPACE}" \
   -t movieratings \
   -u "${ASTRA_DB_CLIENT_ID}" \
   -p "${ASTRA_DB_CLIENT_SECRET}" \
@@ -63,7 +63,7 @@ cat initialize/create_tables.cql.template | sed "s/%KEYSPACE_NAME%/${ASTRA_DB_KE
   -delim ',' \
   -m "movieid,title,genres" \
   -header false \
-  -k machine_learning \
+  -k "${ASTRA_DB_KEYSPACE}" \
   -t movies \
   -u "${ASTRA_DB_CLIENT_ID}" \
   -p "${ASTRA_DB_CLIENT_SECRET}" \
@@ -76,7 +76,7 @@ cat initialize/create_tables.cql.template | sed "s/%KEYSPACE_NAME%/${ASTRA_DB_KE
   -delim ',' \
   -m "userid,jokeid,rating" \
   -header false \
-  -k machine_learning \
+  -k "${ASTRA_DB_KEYSPACE}" \
   -t jokes \
   -u "${ASTRA_DB_CLIENT_ID}" \
   -p "${ASTRA_DB_CLIENT_SECRET}" \
