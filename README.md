@@ -175,8 +175,6 @@ _(coming soon)_
 
 ## 8. What's NEXT
 
-<img src="images/intro-ml-badge.png?raw=true" width="150" align="left" />
-
 We've just scratched the surface of what you can do with
 - Astra DB, built on Apache Cassandra™;
 - Apache Spark™
@@ -184,6 +182,8 @@ We've just scratched the surface of what you can do with
 
 Go take a look at [DataStax for Developers](https://www.datastax.com/dev) to see what else is possible.
 There's plenty to dig into!
+
+<img src="images/intro-ml-badge.png?raw=true" width="150" align="right" />
 
 **Congratulations: you made to the end of today's workshop.**
 
