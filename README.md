@@ -175,6 +175,8 @@ _(coming soon)_
 
 ## 8. What's NEXT
 
+<img src="images/intro-ml-badge.png?raw=true" width="150" align="left" />
+
 We've just scratched the surface of what you can do with
 - Astra DB, built on Apache Cassandra™;
 - Apache Spark™
@@ -186,8 +188,6 @@ There's plenty to dig into!
 **Congratulations: you made to the end of today's workshop.**
 
 Don't forget to [submit your homework](#7-homework) and be awarded a nice verified badge!
-
-<img src="images/intro-ml-badge.png?raw=true" width="150" align="left" />
 
 **... and see you at our next workshop!**
 
