@@ -132,6 +132,7 @@ We suggest to use Gitpod: **right-click** on the following button and **open in 
 
 If you are on Gitpod, simply follow the on-screen instructions to get everything running:
 
+- Wait 2-3 minutes as your IDE (and Linux box) gets provisioned...
 - Enter the required information (Astra Token ID, Token Secret and keyspace name)
 - When asked, drag-and-drop (or copy) the Secure bundle to the required destination
 - Eventually the Gitpod console will spawn a new tab with the Jupter UI running (check your pop-up blocker to let it through)
