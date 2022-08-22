@@ -3,13 +3,13 @@
 
 Welcome to the **Introduction to machine learning** workshop! In this two-hour workshop, we show you how you can leverage the distributed `NoSQL database Apache Cassandra™` to save your datasets, train you models and predict at scale.
 
-Want to learn about the awesomness of distributed databases and computational systems?
+Want to learn about the awesomeness of distributed databases and computational systems?
 Want to get hands-on with DataStax's Cassandra-as-a-Service offering (_for free!_) and use popular Machine Learning tools and algorithms?
 Join in and follow along with this workshop!
 
 - Spark + Cassandra = :heart:
 
-- Spark + DataStax Astra = :fire: :rocket: :stars:
+- Spark + DataStax Astra DB = :fire: :rocket: :stars:
 
 It doesn't matter if you join our workshop live or you prefer to do at your own pace, we have you covered. In this repository, you'll find everything you need for this workshop:
 
@@ -23,7 +23,6 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 6. [Algorithms](#6-algorithms)
 7. [Homework](#7-homework)
 8. [What's NEXT](#8-whats-next-)
-<p><br/>
 
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
 
