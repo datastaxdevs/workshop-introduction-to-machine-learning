@@ -42,28 +42,36 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 <details>
 <summary>**1️⃣ Can I run this workshop on my computer?**</summary>
+
 There is nothing preventing you from running the workshop on your own machine. If you do so, you will need: `git`, `docker`, `docker-compose`.
 
 In this readme, we try to provide instructions for local development as well - but keep in mind that the main focus is development on Gitpod, hence **we can't guarantee live support** about local development in order to keep on track with the schedule. However, we will do our best to give you the info you need to succeed.
+
 </details>
 
 <details>
 <summary>**2️⃣ Are there other prerequisites?**</summary>
+
 You will need enough *real estate* on screen, we will ask you to open a few windows and it would not fit on mobiles (tablets should be OK).
 
 You will need an Astra account: don't worry, we'll work through that in the following.
+
 </details>
 
 <details>
 <summary>**3️⃣ Do I need to pay for anything for this workshop?**</summary>
+
 **No.** All tools and services we provide here are FREE. FREE not only during the session but also afterwards.
+
 </details>
 
 <details>
 <summary>**4️⃣ Will I get a certificate if I attend this workshop?**</summary>
+
 Attending the session is not enough. You need to complete the [homework detailed below](#7-homework)
 and you will get a nice badge that you can share on linkedin or anywhere else
 _(the badge conforms to the "open badge" specifications)_.
+
 </details>
 
 ## 3. Materials for the Session
