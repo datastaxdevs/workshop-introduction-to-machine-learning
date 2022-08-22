@@ -124,8 +124,11 @@ Then go to the Connect tab for your database and download your **Secure Connect 
 
 ## 5. Setup
 
-We suggest to use [Gitpod](https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/stefano) (right-click on link and open in new tab NOW), but you can also run everything locally.
-In the latter case, you may need to know what you are doing - we won't be able to troubleshoot live.
+We suggest to use Gitpod: **right-click** on the following button and **open in new tab**:
+
+<a href="https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning"><img src="images/open_in_gitpod.svg?raw=true" /></a>
+
+> You can also run everything locally. In this case, you may need to know what you are doing, as we won't be able to troubleshoot live.
 
 If you are on Gitpod, simply follow the on-screen instructions to get everything running:
 
