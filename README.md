@@ -98,9 +98,9 @@ we have you covered. In this repository, you'll find everything you need for thi
 
 _**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, 40M read/write operations and about 80GB storage monthly for free - sufficient to run small production workloads. If you end your credits the databases will pause, no charge_
 
-Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. *Right-Click the following button* and *Open in a new TAB.*
+Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database.
 
-<a href="https://astra.dev/8-31"><img src="images/create_astra_db_button.png?raw=true" /></a>
+<a href="https://astra.dev/8-31" target="_blank"><img src="images/create_astra_db_button.png?raw=true" /></a>
 
 |Field|Value|
 |---|---|
@@ -124,9 +124,9 @@ Then go to the Connect tab for your database and download your **Secure Connect 
 
 ## 5. Setup
 
-We suggest to use Gitpod: **right-click** on the following button and **open in new tab**:
+We suggest to use Gitpod: **click** on the following button which will **open in new tab**:
 
-<a href="https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning"><img src="images/open_in_gitpod.svg?raw=true" /></a>
+<a href="https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning" target="_blank"><img src="images/open_in_gitpod.svg?raw=true" /></a>
 
 > You can also run everything locally. In this case, you may need to know what you are doing, as we won't be able to troubleshoot live.
 
