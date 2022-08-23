@@ -100,7 +100,7 @@ _**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all
 
 Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database.
 
-<a href="https://astra.dev/8-31" target="_blank"><img src="images/create_astra_db_button.png?raw=true" /></a>
+[![Astra](images/create_astra_db_button.png?raw=true)](https://astra.dev/8-31){:target="_blank" rel="noopener"}
 
 |Field|Value|
 |---|---|
@@ -126,7 +126,8 @@ Then go to the Connect tab for your database and download your **Secure Connect 
 
 We suggest to use Gitpod: **click** on the following button which will **open in new tab**:
 
-<a href="https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning" target="_blank"><img src="images/open_in_gitpod.svg?raw=true" /></a>
+[![Astra](images/open_in_gitpod.svg?raw=true)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning){:target="_blank" rel="noopener"}
+
 
 > You can also run everything locally. In this case, you may need to know what you are doing, as we won't be able to troubleshoot live.
 
