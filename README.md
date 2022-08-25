@@ -129,10 +129,13 @@ In the latter case, you may need to know what you are doing - we won't be able t
 
 If you are on Gitpod, simply follow the on-screen instructions to get everything running:
 
-- Enter the required information (Astra Token ID, Token Secret and keyspace name)
+- Enter the following information to connect to DB:
+  + Astra DB Token ID
+  + Astra DB Token Secret
+  + Keyspace name (`machine_learning` by default)
 - When asked, drag-and-drop (or copy) the Secure bundle to the required destination
 - Eventually the Gitpod console will spawn a new tab with the Jupter UI running (check your pop-up blocker to let it through)
-- The password for the notebooks is `mlrules`
+- Insert the password `mlrules` to access the Jupyter UI
 
 <details><summary>Steps for running locally (click to show)</summary>
 

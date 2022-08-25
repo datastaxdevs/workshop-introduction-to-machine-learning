@@ -2,14 +2,21 @@
 
 # Gitpod-only.
 
-echo "ASTRA DB CONFIGURATION"
+echo "** ASTRA DB CONFIGURATION **";
+echo "Enter the required information to connect to your Astra DB instance";
+echo "(make sure you have a DB token and a Secure Connect Bundle zipfile)";
 
-read -p "Enter Client ID from token: " CLIENT_ID
+read -p "Enter Client ID from token     : " CLIENT_ID
 
-read -sp "Enter Client Secret from token : " CLIENT_SECRET
-echo ""
+read -p "Enter Client Secret from token : " CLIENT_SECRET
 
 read -p "** Please drag-and-drop (i.e. copy) your secure bundle zip file to jupyter/secureconnect NOW. Press Enter when ready **" DUMMY
+
+# we copy zip files downstairs
+ROOTDIR_SECURE_BUNDLE=`ls *.zip | head -n 1`
+if [ -n "${ROOTDIR_SECURE_BUNDLE}" ]; then
+  cp "${ROOTDIR_SECURE_BUNDLE}" jupyter/secureconnect/;
+fi
 
 DEFAULT_SECURE_BUNDLE=`ls jupyter/secureconnect/*.zip | head -n 1`
 DEFAULT_SECURE_BUNDLE=${DEFAULT_SECURE_BUNDLE:-jupyter/secureconnect/secure-connect-workshops.zip}
@@ -28,14 +35,18 @@ cat jupyter/.env.sample \
   | sed "s/machine_learning/${KEYSPACE}/g" \
   > jupyter/.env
 
-# ./initialize/initialize.sh
+echo -e "\n\n** Dotenv file created. Please wait 1-2 minutes while we populate your database ...\n\n";
 
-JUPYTER_URL="$(gp url 8888)"
+./initialize/initialize.sh
+
+
+echo -e "\n\n\n\n** Tables created and populated.";
+JUPYTER_URL="$(gp url 8888 2>/dev/null)"
 if [ -n "${JUPYTER_URL}" ]; then
-  echo -e "\n\n\n\n\n\t\t** OPENING JUPYTER IN NEW TAB. PLEASE CHECK YOUR POP-UP BLOCKER **\n";
+  echo -e "\n\t\t** OPENING JUPYTER IN NEW TAB. PLEASE CHECK YOUR POP-UP BLOCKER **\n";
   echo -e "\t\t** TARGET URL: ${JUPYTER_URL} **";
   gp preview --external ${JUPYTER_URL};
 else
   JUPYTER_URL="http://localhost:8888/"
-  echo -e "\n\n\n\n\n\t\t** PLEASE POINT YOUR BROWSER TO ${JUPYTER_URL} **\n";
+  echo -e "\n\t\t** PLEASE POINT YOUR BROWSER TO ${JUPYTER_URL} **\n";
 fi
