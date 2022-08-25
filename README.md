@@ -118,7 +118,7 @@ The database status will change from `Pending` to `Active` when the database is 
 
 > If you already had the database, you can still create a new token: see [here](https://awesome-astra.github.io/docs/pages/astra/create-token/#b-prerequisites).
 
-Then go to the Connect tab for your database and download your **Secure Connect Bundle**, as described [at this link](https://awesome-astra.github.io/docs/pages/astra/download-scb/). It's a ZIP file of about 12Kb, which you will need later.
+Then go to the _Connect_ tab for your database and download your **Secure Connect Bundle**, as described [at this link](https://awesome-astra.github.io/docs/pages/astra/download-scb/). It's a ZIP file of about 12Kb, which you will need later.
 
 [🏠 Back to Table of Contents](#-table-of-content)
 

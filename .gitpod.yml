@@ -11,7 +11,6 @@ tasks:
     command: |
       clear
       ./setup.sh
-      # echo -e "\n\n\t\t** PLEASE LAUNCH ./setup.sh WHEN READY **\n\n"
 ports:
   - port: 8888
     visibility: public
