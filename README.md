@@ -169,6 +169,11 @@ sequentially by clicking on them and hitting `Ctrl + Enter`.
 Watch each code cell execute (its numbering will display `[*]` while running)
 and, when it finishes, move on to the next.
 
+> _Note_: if you see errors such as empty or nonexisting tables, chances are
+> you started the lab while the database was still being created or was in
+> "maintenance mode". To fix this, simply issue the command `./initialize/initialize.sh`
+> and wait one minute or so for it to complete.
+
 ## 7. Homework
 
 _(coming soon)_
@@ -183,11 +188,11 @@ We've just scratched the surface of what you can do with
 Go take a look at [DataStax for Developers](https://www.datastax.com/dev) to see what else is possible.
 There's plenty to dig into!
 
+<img src="images/intro-ml-badge.png?raw=true" width="150" align="right" />
+
 **Congratulations: you made to the end of today's workshop.**
 
 Don't forget to [submit your homework](#7-homework) and be awarded a nice verified badge!
-
-![Badge](images/intro-ml-badge.png)
 
 **... and see you at our next workshop!**
 
