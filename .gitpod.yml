@@ -1,17 +1,22 @@
 tasks:
   - name: main-console
+    before: |
+      curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
+      printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
+      printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
     init: |
       # an undesirable fix for "permission errors" on docker, see https://github.com/jupyter/docker-stacks/issues/114 - should improve this!
       chmod 777 jupyter
       chmod 777 jupyter/secureconnect
       chmod 777 jupyter/*.ipynb
-      #
-      #
-      ./init_tools.sh
+      
+      #./init_tools.sh
+      docker-compose up -d
     command: |
       clear
-      ./setup.sh
-      # echo -e "\n\n\t\t** PLEASE LAUNCH ./setup.sh WHEN READY **\n\n"
+      source /home/gitpod/.astra/cli/astra-init.sh
+      
+      #./setup.sh
 ports:
   - port: 8888
     visibility: public
