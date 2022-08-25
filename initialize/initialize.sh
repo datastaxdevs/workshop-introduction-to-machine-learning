@@ -3,21 +3,13 @@
 # get astra cli - TODO
 
 # prepare dot env file - TODO. Now we assume .env is there already
-
 source ./jupyter/.env
 
-# make create-tables script
-cat initialize/create_tables.cql.template | sed "s/%KEYSPACE_NAME%/${ASTRA_DB_KEYSPACE}/g" > initialize/create_tables.cql
-
 # run create-tables script
-./bin/cqlsh-astra/bin/cqlsh \
-  -u "${ASTRA_DB_CLIENT_ID}" \
-  -p "${ASTRA_DB_CLIENT_SECRET}" \
-  -b "jupyter/${ASTRA_DB_SECURE_BUNDLE_PATH}" \
-  -f initialize/create_tables.cql
+astra db cqlsh workshops  -k "${ASTRA_DB_KEYSPACE}" -f initialize/create_tables.cql
 
 # dsbulk calls to populate tables
-./bin/dsbulk-1.9.1/bin/dsbulk \
+astra db dsbulk workshops
   load \
   -url jupyter/data/socialMedia.csv \
   -c csv \
@@ -26,10 +18,7 @@ cat initialize/create_tables.cql.template | sed "s/%KEYSPACE_NAME%/${ASTRA_DB_KE
   -header false \
   -k "${ASTRA_DB_KEYSPACE}" \
   -t socialmedia \
-  -u "${ASTRA_DB_CLIENT_ID}" \
-  -p "${ASTRA_DB_CLIENT_SECRET}" \
-  -b "jupyter/${ASTRA_DB_SECURE_BUNDLE_PATH}" \
-
+  
 ./bin/dsbulk-1.9.1/bin/dsbulk \
   load \
   -url jupyter/data/winequality.csv \
