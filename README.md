@@ -100,7 +100,7 @@ _**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all
 
 Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. *Right-Click the following button* and *Open in a new TAB.*
 
-<a href="https://astra.dev/8-31" target="_blank" rel="noopener"><img src="images/create_astra_db_button.png?raw=true" /></a>
+<a href="https://astra.dev/yt-8-31"><img src="images/create_astra_db_button.png?raw=true" /></a>
 
 |Field|Value|
 |---|---|
@@ -124,19 +124,18 @@ Then go to the Connect tab for your database and download your **Secure Connect 
 
 ## 5. Setup
 
-We suggest to use Gitpod: **right-click** on the following button and **open in new tab**:
-
-<a href="https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning" target="_blank" rel="noopener"><img src="images/open_in_gitpod.svg?raw=true" /></a>
-
-> You can also run everything locally. In this case, you may need to know what you are doing, as we won't be able to troubleshoot live.
+We suggest to use [Gitpod](https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/stefano) (right-click on link and open in new tab NOW), but you can also run everything locally.
+In the latter case, you may need to know what you are doing - we won't be able to troubleshoot live.
 
 If you are on Gitpod, simply follow the on-screen instructions to get everything running:
 
-- Wait 2-3 minutes as your IDE (and Linux box) gets provisioned...
-- Enter the required information (Astra Token ID, Token Secret and keyspace name)
+- Enter the following information to connect to DB:
+  + Astra DB Token ID
+  + Astra DB Token Secret
+  + Keyspace name (`machine_learning` by default)
 - When asked, drag-and-drop (or copy) the Secure bundle to the required destination
 - Eventually the Gitpod console will spawn a new tab with the Jupter UI running (check your pop-up blocker to let it through)
-- The password for the notebooks is `mlrules`
+- Insert the password `mlrules` to access the Jupyter UI
 
 <details><summary>Steps for running locally (click to show)</summary>
 
