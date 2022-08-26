@@ -41,7 +41,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 ## 2. Frequently asked questions
 
 <details>
-<summary>**1️⃣ Can I run this workshop on my computer?**</summary>
+<summary><strong>1️⃣ Can I run this workshop on my computer?</strong></summary>
 
 There is nothing preventing you from running the workshop on your own machine. If you do so, you will need: `git`, `docker`, `docker-compose`.
 
@@ -50,7 +50,7 @@ In this readme, we try to provide instructions for local development as well - b
 </details>
 
 <details>
-<summary>**2️⃣ Are there other prerequisites?**</summary>
+<summary><strong>2️⃣ Are there other prerequisites?</strong></summary>
 
 You will need enough *real estate* on screen, we will ask you to open a few windows and it would not fit on mobiles (tablets should be OK).
 
@@ -59,14 +59,14 @@ You will need an Astra account: don't worry, we'll work through that in the foll
 </details>
 
 <details>
-<summary>**3️⃣ Do I need to pay for anything for this workshop?**</summary>
+<summary><strong>3️⃣ Do I need to pay for anything for this workshop?</strong></summary>
 
 **No.** All tools and services we provide here are FREE. FREE not only during the session but also afterwards.
 
 </details>
 
 <details>
-<summary>**4️⃣ Will I get a certificate if I attend this workshop?**</summary>
+<summary><strong>4️⃣ Will I get a certificate if I attend this workshop?</strong></summary>
 
 Attending the session is not enough. You need to complete the [homework detailed below](#7-homework)
 and you will get a nice badge that you can share on linkedin or anywhere else
@@ -86,7 +86,7 @@ we have you covered. In this repository, you'll find everything you need for thi
 ### Requirements
 
 * [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [DataStax Astra Registration](http://astra.datastax.com) (_sign up with the email you used to register for the workshop!_)
+* [DataStax Astra Registration](https://astra.dev/yt-8-31) (_sign up with the email you used to register for the workshop!_)
 * [Docker](https://www.docker.com/products/docker-desktop)
 * [Docker-compose](https://docs.docker.com/compose/install/) (_included with Docker Desktop for Mac and Windows installs_)
 
@@ -98,7 +98,7 @@ we have you covered. In this repository, you'll find everything you need for thi
 
 _**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, 40M read/write operations and about 80GB storage monthly for free - sufficient to run small production workloads. If you end your credits the databases will pause, no charge_
 
-Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. *Right-Click the following button* and *Open in a new TAB.*
+Leveraging the [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure), create a database. *Right-Click the following button* and *Open in a new TAB:*
 
 <a href="https://astra.dev/yt-8-31" target="_blank" rel="noopener"><img src="images/create_astra_db_button.png?raw=true" /></a>
 
@@ -108,11 +108,11 @@ Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/
 |**Keyspace Name**| `machine_learning`|
 |**Regions**| Select `GOOGLE CLOUD`, then an Area close to you, then a region with no LOCKER 🔒 icons, those are the region you can use for free.   |
 
-> **ℹ️ Note:** If you already have a database `workshops`, simply add a keyspace `machine_learning` using the `Add Keyspace` button on the bottom right hand corner of db dashboard page.
+> **ℹ️ Note:** If you already have a database `workshops`, simply add a keyspace `machine_learning` using the `Add Keyspace` button on the bottom right hand corner of the DB dashboard page.
 
 While the database is being created, you will also get a
 [**Security token**](https://awesome-astra.github.io/docs/pages/astra/create-token/#b-prerequisites):
-save it somewhere safe, since we'll need it later during setup.
+save it somewhere safe, since you'll need it later during setup.
 
 The database status will change from `Pending` to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
@@ -132,20 +132,20 @@ We suggest to use Gitpod: **right-click** on the following button and **open in 
 
 If you are on Gitpod, simply follow the on-screen instructions to get everything running:
 
-- _Wait 2-3 minutes as your IDE (and Linux box) gets provisioned..._
+- ⌛ _Wait 2-3 minutes as your IDE (and Linux box) gets provisioned..._
 - When prompted in the Gitpod Console, enter the following information to connect to DB:
   + Astra DB Token ID
   + Astra DB Token Secret
   + Keyspace name (`machine_learning` by default)
 - When asked, drag-and-drop (or copy) the Secure bundle to the required destination
-- _Wait another 1-2 minutes (while tables are created and populated in your database) ..._
-- Eventually the Gitpod console will spawn a new tab with the Jupter UI running (check your pop-up blocker to let it through)
+- ⌛ _Wait another 1-2 minutes (while tables are created and populated in your database) ..._
+- Eventually the Gitpod console will spawn a new tab with the Jupter UI running (**check your pop-up blocker** to let it through)
 - Insert the password `mlrules` to access the Jupyter UI
 
 <details><summary>Steps for running locally (click to show)</summary>
 
 - Clone the repo, `cd` into it and launch `./init_tools.sh` (to get the required tools ready and `docker-compose` up and running).
-- Once that is finished, launch `./setup.sh` and follow the instructions.
+- Once that is finished, launch `./setup.sh` and follow the instructions, similarly as for Gitpod.
 
 > You may need to use some custom IP instead of `localhost` if you
 > use docker-for-mac, docker-for-windows or similar installation.
@@ -187,7 +187,7 @@ _(coming soon)_
 
 We've just scratched the surface of what you can do with
 - Astra DB, built on Apache Cassandra™;
-- Apache Spark™
+- Apache Spark™;
 - the awesome algorithm in the Machine Learning field.
 
 Go take a look at [DataStax for Developers](https://www.datastax.com/dev) to see what else is possible.
