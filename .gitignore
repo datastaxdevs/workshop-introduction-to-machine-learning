@@ -8,6 +8,5 @@ __pycache__
 .local/
 jupyter/secureconnect/*.zip
 secure*.zip
-initialize/create_tables.cql
 bin/
 logs/
