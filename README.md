@@ -157,6 +157,18 @@ If you are on Gitpod, simply follow the on-screen instructions to get everything
 
 </details>
 
+<details><summary>🤦 "I messed up and I need to re-initialize" (click to show)</summary>
+
+Don't worry, it happens. Re-initialization of the full repo goes as follows:
+
+- `./init_tools.sh`: this downloads Astra DB client utilities and starts your `docker-compose` image(s). Make sure you have no running 
+Docker images before re-launching this.
+- `./setup.sh`: this allows you to re-create the secrets file. Launch again if you messed up with token info, bundle zipfile and so on. This, in turn, invokes the following ...
+- `./initialize/initialize.sh`: table creation and bulk migration of needed datasets from files to database tables.
+
+</details>
+
+
 ## 6. Algorithms
 
 The main Jupyter web interface will list five numbered notebooks available.
