@@ -96,51 +96,34 @@ we have you covered. In this repository, you'll find everything you need for thi
 
 ## 4. Create your Astra DB instance
 
-_**`ASTRA DB`** is the simplest way to run Cassandra with zero operations at all - just push the button and get your cluster. No credit card required, 40M read/write operations and about 80GB storage monthly for free - sufficient to run small production workloads. If you end your credits the databases will pause, no charge_
-
-Leveraging [Database creation guide](https://awesome-astra.github.io/docs/pages/astra/create-instance/#c-procedure) create a database. *Right-Click the following button* and *Open in a new TAB.*
+**✅ Step 4a.** Sign in (or sign up) to your Astra account
 
 <a href="https://astra.dev/yt-8-31"><img src="images/create_astra_db_button.png?raw=true" /></a>
 
-|Field|Value|
-|---|---|
-|**Database Name**| `workshops`|
-|**Keyspace Name**| `machine_learning`|
-|**Regions**| Select `GOOGLE CLOUD`, then an Area close to you, then a region with no LOCKER 🔒 icons, those are the region you can use for free.   |
+**✅ Step 4b.** Create an application token by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a>. Skip this step is you already have a token. You can reuse the same token in our other workshops, too.
 
-> **ℹ️ Note:** If you already have a database `workshops`, simply add a keyspace `machine_learning` using the `Add Keyspace` button on the bottom right hand corner of db dashboard page.
+> Your token should look like: `AstraCS:....`
 
-While the database is being created, you will also get a
-[**Security token**](https://awesome-astra.github.io/docs/pages/astra/create-token/#b-prerequisites):
-save it somewhere safe, since we'll need it later during setup.
+**✅ Step 4c.** 
 
-The database status will change from `Pending` to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
+We suggest to use `#Gitpod` but you can also run everything locally.
 
-> If you already had the database, you can still create a new token: see [here](https://awesome-astra.github.io/docs/pages/astra/create-token/#b-prerequisites).
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/cedrick-cli) (right-click -> open in new TAB)
 
-Then go to the Connect tab for your database and download your **Secure Connect Bundle**, as described [at this link](https://awesome-astra.github.io/docs/pages/astra/download-scb/). It's a ZIP file of about 12Kb, which you will need later.
-
-[🏠 Back to Table of Contents](#-table-of-content)
-
-## 5. Setup
-
-We suggest to use [Gitpod](https://gitpod.io/#https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/stefano) (right-click on link and open in new tab NOW), but you can also run everything locally.
-In the latter case, you may need to know what you are doing - we won't be able to troubleshoot live.
-
-If you are on Gitpod, simply follow the on-screen instructions to get everything running:
-
-- Enter the following information to connect to DB:
-  + Astra DB Token ID
-  + Astra DB Token Secret
-  + Keyspace name (`machine_learning` by default)
-- When asked, drag-and-drop (or copy) the Secure bundle to the required destination
-- Eventually the Gitpod console will spawn a new tab with the Jupter UI running (check your pop-up blocker to let it through)
-- Insert the password `mlrules` to access the Jupyter UI
 
 <details><summary>Steps for running locally (click to show)</summary>
 
-- Clone the repo, `cd` into it and launch `./init_tools.sh` (to get the required tools ready and `docker-compose` up and running).
-- Once that is finished, launch `./setup.sh` and follow the instructions.
+- Clone the repo
+
+```
+git clone https://github.com/datastaxdevs/workshop-introduction-to-machine-learning.git
+cd workshop-introduction-to-machine-learning
+```
+
+- Install Astra CLI 
+```
+curl -Ls "https://dtsx.io/get-astra-cli"
+```
 
 > You may need to use some custom IP instead of `localhost` if you
 > use docker-for-mac, docker-for-windows or similar installation.
@@ -152,6 +135,250 @@ If you are on Gitpod, simply follow the on-screen instructions to get everything
 > You may need to repeat steps of the notebook you were working on.
 
 </details>
+
+.
+
+**✅ Step 4d.** Setup Astra CLI by providing your application token
+```
+astra setup
+```
+
+**✅ Step 4e.** List your existing Astra DB databases:
+```
+astra db list
+```
+
+**✅ Step 4f.** Create database `workshops` and keyspace `machine_learning` if they do not exist:
+```
+astra db create workshops -k machine_learning --if-not-exist
+```
+
+**✅ Step 4g.** Check the status of database `workshops`:
+```
+astra db status workshops
+```
+
+**✅ Step 4h.** If database `workshops` exists and has status `HIBERNATED`, resume the database. 
+
+```
+astra db resume workshops
+```
+
+**✅ Step 4i.** If database `workshops` has status `RESUMING` or `PENDING`, **wait until the status becomes `ACTIVE`**:
+```
+astra db get workshops
+```
+
+## 5. Setup your Astra DB instance
+
+**✅ Step 5a.** Start the CQL shell and connect to database `workshops` and keyspace `machine_learning`:
+
+```
+clear
+astra db cqlsh workshops -k machine_learning
+```
+
+**✅ Step 5b.** Initialize the Schema with `cqlsh`
+
+```sql
+CREATE TABLE IF NOT EXISTS socialmedia (
+  status_id         INT,
+  social_type       TEXT,
+  num_reactions     INT,
+  num_comments      INT,
+  num_shares        INT,
+  num_likes         INT,
+  num_loves         INT,
+  num_wows          INT,
+  num_hahas         INT,
+  num_sads          INT,
+  num_angrys        INT,
+  PRIMARY KEY (status_id)
+);
+
+CREATE TABLE IF NOT EXISTS wines (
+    wineid          INT,
+    fixedacidity    FLOAT,
+    volatileacidity FLOAT,
+    citricacid      FLOAT,
+    sugar           FLOAT,
+    chlorides       FLOAT,
+    freesulfur      FLOAT,
+    totalsulfur     FLOAT,
+    density         FLOAT,
+    ph              FLOAT,
+    sulphates       FLOAT,
+    alcohol         FLOAT,
+    quality         FLOAT,
+    PRIMARY KEY (wineid)
+);
+
+CREATE TABLE IF NOT EXISTS movies (
+    movieid         INT,
+    title           TEXT,
+    genres          TEXT,
+    PRIMARY KEY (movieid)
+);
+
+CREATE TABLE IF NOT EXISTS movieratings (
+    userid          INT,
+    movieid         INT,
+    rating          FLOAT,
+    timestamp       TEXT,
+    PRIMARY KEY (userid, movieid)
+);
+
+CREATE TABLE IF NOT EXISTS jokes (
+    userid          INT,
+    jokeid          INT,
+    rating          FLOAT,
+    PRIMARY KEY (userid, jokeid)
+);
+
+quit;
+```
+
+You can also do simply run a file:
+```
+astra db cqlsh workshops -k machine_learning -f ./initialize/create_tables.cql
+```
+
+**✅ Step 5c.** Populate table `socialmedia`
+
+```
+astra db dsbulk workshops
+  load \
+  -url jupyter/data/socialMedia.csv \
+  -c csv \
+  -delim ',' \
+  -m "status_id,social_type,num_reactions,num_comments,num_shares,num_likes,num_loves,num_wows,num_hahas,num_sads,num_angrys" \
+  -header false \
+  -k "machine_learning" \
+  -t socialmedia
+```
+
+**✅ Step 5d.** Populate table `wines`
+
+```
+astra db dsbulk workshops
+  load \
+  -url jupyter/data/winequality.csv \
+  -c csv \
+  -delim ',' \
+  -m "wineid,fixedacidity,volatileacidity,citricacid,sugar,chlorides,freesulfur,totalsulfur,density,ph,sulphates,alcohol,quality" \
+  -header false \
+  -k "machine_learning" \
+  -t wines
+```
+
+**✅ Step 5e.** Populate table `movieratings`
+
+```
+astra db dsbulk workshops
+  load \
+  -url jupyter/data/ratings.csv \
+  -c csv \
+  -delim ',' \
+  -m "userid,movieid,rating,timestamp" \
+  -header false \
+  -k "machine_learning" \
+  -t movieratings
+```
+
+**✅ Step 5f.** Populate table `movies`
+
+```
+astra db dsbulk workshops
+  load \
+  -url jupyter/data/movies.csv \
+  -c csv \
+  -delim ',' \
+  -m "movieid,title,genres" \
+  -header false \
+  -k "${ASTRA_DB_KEYSPACE}" \
+  -t movies```
+```
+
+**✅ Step 5g.** Populate table `jokes`
+
+```
+astra db dsbulk workshops
+  load \
+  -url jupyter/data/jester_ratings3.csv \
+  -c csv \
+  -delim ',' \
+  -m "userid,jokeid,rating" \
+  -header false \
+  -k "machine_learning" \
+  -t jokes
+```
+
+## 6. Setup Jupyter notebook
+
+Jupyter notebook is a web based application that we will use to demonstrate the different algorithms
+
+**✅ Step 6a.** Download credentials as a `zip` for jupyter
+
+```
+astra db workshops download-scb -f ./jupyter/secureconnect/secure-connect-workshops.zip
+```
+
+> You might get an error if your database contains multiple regions (not on the free tier). If so please, use the following command instead
+
+```
+astra db workshops download-scb -d ./jupyter/secureconnect/
+```
+
+And then rename the file you want to use case `secure-connect-workshops.zip`
+
+**✅ Step 6b.** Init environment variables
+
+```
+export ASTRA_DB_CLIENT_ID=token
+export ASTRA_DB_CLIENT_SECRET=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
+export ASTRA_DB_SECURE_BUNDLE_PATH="./secureconnect/secure-connect-workshops.zip"
+export ASTRA_DB_KEYSPACE="machine_learning"
+```
+
+**✅ Step 6c.** Start Jupyter with Docker
+
+```
+docker-compose up -d
+```
+
+**✅ Step 6d.** Signin to Jupyter
+
+- run the following 
+
+```bash
+JUPYTER_URL="$(gp url 8888 2>/dev/null)"
+if [ -n "${JUPYTER_URL}" ]; then
+  echo -e "\n\t\t** OPENING JUPYTER IN NEW TAB. PLEASE CHECK YOUR POP-UP BLOCKER **\n";
+  echo -e "\t\t** TARGET URL: ${JUPYTER_URL} **";
+  gp preview --external ${JUPYTER_URL};
+else
+  JUPYTER_URL="http://localhost:8888/"
+  echo -e "\n\t\t** PLEASE POINT YOUR BROWSER TO ${JUPYTER_URL} **\n";
+fi
+```
+
+- Eventually the Gitpod console will spawn a new tab with the Jupter UI running (check your pop-up blocker to let it through)
+
+- Insert the password `mlrules` to access the Jupyter UI
+
+<details><summary>Advices if running locally (click to show)</summary>
+
+> You may need to use some custom IP instead of `localhost` if you
+> use docker-for-mac, docker-for-windows or similar installation.
+
+> _Known Issue_: in some cases executing the exercises may lead to memory issues, especially
+> on weaker or non-Linux machines due to docker limitations on memory. If you have any
+> issues with exercises after the first few, try to clean up and start again
+> `docker-compose kill && docker-compose down && docker-compose up -d`.
+> You may need to repeat steps of the notebook you were working on.
+
+</details>
+.
 
 ## 6. Algorithms
 

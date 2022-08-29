@@ -6,9 +6,11 @@
 source ./jupyter/.env
 
 # run create-tables script
+echo "$(tput setaf 2)[INFO]$(tput setaf 7) - Initializing Schema"
 astra db cqlsh workshops  -k "${ASTRA_DB_KEYSPACE}" -f initialize/create_tables.cql
 
 # dsbulk calls to populate tables
+echo "$(tput setaf 2)[INFO]$(tput setaf 7) - Table socialmedia"
 astra db dsbulk workshops
   load \
   -url jupyter/data/socialMedia.csv \
@@ -17,9 +19,10 @@ astra db dsbulk workshops
   -m "status_id,social_type,num_reactions,num_comments,num_shares,num_likes,num_loves,num_wows,num_hahas,num_sads,num_angrys" \
   -header false \
   -k "${ASTRA_DB_KEYSPACE}" \
-  -t socialmedia \
-  
-./bin/dsbulk-1.9.1/bin/dsbulk \
+  -t socialmedia
+
+echo "$(tput setaf 2)[INFO]$(tput setaf 7) - Table wines"
+astra db dsbulk workshops
   load \
   -url jupyter/data/winequality.csv \
   -c csv \
@@ -27,12 +30,10 @@ astra db dsbulk workshops
   -m "wineid,fixedacidity,volatileacidity,citricacid,sugar,chlorides,freesulfur,totalsulfur,density,ph,sulphates,alcohol,quality" \
   -header false \
   -k "${ASTRA_DB_KEYSPACE}" \
-  -t wines \
-  -u "${ASTRA_DB_CLIENT_ID}" \
-  -p "${ASTRA_DB_CLIENT_SECRET}" \
-  -b "jupyter/${ASTRA_DB_SECURE_BUNDLE_PATH}" \
+  -t wines
 
-./bin/dsbulk-1.9.1/bin/dsbulk \
+echo "$(tput setaf 2)[INFO]$(tput setaf 7) - Table movieratings"
+astra db dsbulk workshops
   load \
   -url jupyter/data/ratings.csv \
   -c csv \
@@ -40,12 +41,10 @@ astra db dsbulk workshops
   -m "userid,movieid,rating,timestamp" \
   -header false \
   -k "${ASTRA_DB_KEYSPACE}" \
-  -t movieratings \
-  -u "${ASTRA_DB_CLIENT_ID}" \
-  -p "${ASTRA_DB_CLIENT_SECRET}" \
-  -b "jupyter/${ASTRA_DB_SECURE_BUNDLE_PATH}" \
+  -t movieratings
 
-./bin/dsbulk-1.9.1/bin/dsbulk \
+echo "$(tput setaf 2)[INFO]$(tput setaf 7) - Table movies"
+astra db dsbulk workshops
   load \
   -url jupyter/data/movies.csv \
   -c csv \
@@ -53,12 +52,10 @@ astra db dsbulk workshops
   -m "movieid,title,genres" \
   -header false \
   -k "${ASTRA_DB_KEYSPACE}" \
-  -t movies \
-  -u "${ASTRA_DB_CLIENT_ID}" \
-  -p "${ASTRA_DB_CLIENT_SECRET}" \
-  -b "jupyter/${ASTRA_DB_SECURE_BUNDLE_PATH}" \
+  -t movies
 
-./bin/dsbulk-1.9.1/bin/dsbulk \
+echo "$(tput setaf 2)[INFO]$(tput setaf 7) - Table jokes"
+astra db dsbulk workshops
   load \
   -url jupyter/data/jester_ratings3.csv \
   -c csv \
@@ -66,7 +63,5 @@ astra db dsbulk workshops
   -m "userid,jokeid,rating" \
   -header false \
   -k "${ASTRA_DB_KEYSPACE}" \
-  -t jokes \
-  -u "${ASTRA_DB_CLIENT_ID}" \
-  -p "${ASTRA_DB_CLIENT_SECRET}" \
-  -b "jupyter/${ASTRA_DB_SECURE_BUNDLE_PATH}" \
+  -t jokes
+  

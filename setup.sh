@@ -1,6 +1,9 @@
 #!/bin/bash
 
-astra setup
+#astra setup
+
+unset JAVA_TOOL_OPTIONS
+echo "$(tput setaf 2)[OK]$(tput setaf 7) - Initializing Environment"
 
 # -- Env Variables --
 CLIENT_ID=token
@@ -10,6 +13,7 @@ KEYSPACE=machine_learning
 SECURE_BUNDLE=./secureconnect/secure-connect-workshops.zip
 
 ## -- Create DB --
+echo "$(tput setaf 2)[OK]$(tput setaf 7) - Create Database $DB_NAME"
 astra db create ${DB_NAME} -k ${KEYSPACE} --if-not-exist
 astra db list
 astra db get ${DB_NAME}
