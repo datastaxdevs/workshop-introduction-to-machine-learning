@@ -25,6 +25,8 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
 
+![Workshop cover](images/intro-to-ML-cover.png)
+
 ## 1. Objectives
 
 1️⃣ **Learn about the NoSQL database Apache Cassandra™**
