@@ -189,6 +189,8 @@ You will need to re-train the model and re-evaluate the accuracy at each try.
 > Tip: look at the [documentation](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.classification.RandomForestClassifier.html)
 > as a starting point, to see what options there are, pyspark.ml.classification.RandomForestClassifier).
 
+<img src="images/intro-ml-badge.png?raw=true" width="150" align="right" />
+
 You can proceed by selecting some parameters (such as `numTrees` or `maxDepth`),
 increase and decrease their value a bit, and compare the accuracy with the
 "baseline" result from the model you started with.
@@ -196,7 +198,6 @@ Ideally you should change one parameter at a time,
 keeping all others the same as the "baseline".
 Is the model accuracy more sensitive to `numTrees` or `maxDepth`?
 
-<img src="images/intro-ml-badge.png?raw=true" width="150" align="right" />
 
 If you really want to get serious, you could even automate this
 _hyperparameter search_ in the code itself - possibly on a _grid_ of choices
