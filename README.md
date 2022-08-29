@@ -336,12 +336,10 @@ astra db workshops download-scb -f ./jupyter/secureconnect/secure-connect-worksh
 ```
 
 > You might get an error if your database contains multiple regions (not on the free tier). If so please, use the following command instead
-
-```
-astra db workshops download-scb -d ./jupyter/secureconnect/
-```
-
-And then rename the file you want to use case `secure-connect-workshops.zip`
+> ```
+> astra db workshops download-scb -d ./jupyter/secureconnect/
+> ```
+> And then rename the file you want to use case `secure-connect-workshops.zip`
 
 #### ✅ 6b. Init environment variables
 
