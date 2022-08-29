@@ -19,10 +19,11 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 2. [Frequently asked questions](#2-frequently-asked-questions)
 3. [Materials for the Session](#3-materials-for-the-session)
 4. [Create your Database](#4-create-your-astra-db-instance)
-5. [Setup](#5-setup)
-6. [Algorithms](#6-algorithms)
-7. [Homework](#7-homework)
-8. [What's NEXT](#8-whats-next)
+5. [Setup your Database](#5-setup-your-astra-db-instance)
+6. [Setup Jupyter Notebook](#6-setup-jupyter-notebook)
+7. [Algorithms](#6-algorithms)
+8. [Homework](#7-homework)
+9. [What's NEXT](#8-whats-next)
 
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
 
@@ -41,7 +42,7 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 ## 2. Frequently asked questions
 
 <details>
-<summary>**1️⃣ Can I run this workshop on my computer?**</summary>
+<summary><b>1️⃣ Can I run this workshop on my computer?</b></summary>
 
 There is nothing preventing you from running the workshop on your own machine. If you do so, you will need: `git`, `docker`, `docker-compose`.
 
@@ -50,7 +51,7 @@ In this readme, we try to provide instructions for local development as well - b
 </details>
 
 <details>
-<summary>**2️⃣ Are there other prerequisites?**</summary>
+<summary><b>2️⃣ Are there other prerequisites?</b></summary>
 
 You will need enough *real estate* on screen, we will ask you to open a few windows and it would not fit on mobiles (tablets should be OK).
 
@@ -59,14 +60,14 @@ You will need an Astra account: don't worry, we'll work through that in the foll
 </details>
 
 <details>
-<summary>**3️⃣ Do I need to pay for anything for this workshop?**</summary>
+<summary><b>3️⃣ Do I need to pay for anything for this workshop?</b></summary>
 
 **No.** All tools and services we provide here are FREE. FREE not only during the session but also afterwards.
 
 </details>
 
 <details>
-<summary>**4️⃣ Will I get a certificate if I attend this workshop?**</summary>
+<summary><b>4️⃣ Will I get a certificate if I attend this workshop?</b></summary>
 
 Attending the session is not enough. You need to complete the [homework detailed below](#7-homework)
 and you will get a nice badge that you can share on linkedin or anywhere else
@@ -96,20 +97,19 @@ we have you covered. In this repository, you'll find everything you need for thi
 
 ## 4. Create your Astra DB instance
 
-**✅ Step 4a.** Sign in (or sign up) to your Astra account
+#### ✅ 4a. Sign in (or sign up) to your Astra account
 
 <a href="https://astra.dev/yt-8-31"><img src="images/create_astra_db_button.png?raw=true" /></a>
 
-**✅ Step 4b.** Create an application token by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a>. Skip this step is you already have a token. You can reuse the same token in our other workshops, too.
+#### ✅ 4b. Create an application token by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a>. Skip this step is you already have a token. You can reuse the same token in our other workshops, too.
 
 > Your token should look like: `AstraCS:....`
 
-**✅ Step 4c.** 
+#### ✅ 4c. Start Gitpod
 
 We suggest to use `#Gitpod` but you can also run everything locally.
 
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://github.com/datastaxdevs/workshop-introduction-to-machine-learning/tree/cedrick-cli) (right-click -> open in new TAB)
-
 
 <details><summary>Steps for running locally (click to show)</summary>
 
@@ -130,47 +130,50 @@ curl -Ls "https://dtsx.io/get-astra-cli"
 
 .
 
-**✅ Step 4d.** Setup Astra CLI by providing your application token
+#### ✅ 4d. Setup Astra CLI by providing your application token
+
 ```
 astra setup
 ```
 
-**✅ Step 4e.** List your existing Astra DB databases:
+#### ✅ 4e.List your existing Astra DB databases:
+
 ```
 astra db list
 ```
 
-**✅ Step 4f.** Create database `workshops` and keyspace `machine_learning` if they do not exist:
+#### ✅ 4f. Create database `workshops` and keyspace `machine_learning` if they do not exist:
+
 ```
 astra db create workshops -k machine_learning --if-not-exist
 ```
 
-**✅ Step 4g.** Check the status of database `workshops`:
+#### ✅ 4g) Check the status of database `workshops`:
 ```
  astra db get workshops | grep Status | cut -b 28-45
 ```
 
-**✅ Step 4h.** If database `workshops` exists and has status `HIBERNATED`, resume the database. 
+#### ✅ 4h) If database `workshops` exists and has status `HIBERNATED`, resume the database. 
 
 ```
 astra db resume workshops
 ```
 
-**✅ Step 4i.** If database `workshops` has status `RESUMING` or `PENDING`, **wait until the status becomes `ACTIVE`**:
+#### ✅ 4i) If database `workshops` has status `RESUMING` or `PENDING`, **wait until the status becomes `ACTIVE`**:
 ```
 astra db get workshops
 ```
 
 ## 5. Setup your Astra DB instance
 
-**✅ Step 5a.** Start the CQL shell and connect to database `workshops` and keyspace `machine_learning`:
+#### ✅ 5a) Start the CQL shell and connect to database `workshops` and keyspace `machine_learning`:
 
 ```
 clear
 astra db cqlsh workshops -k machine_learning
 ```
 
-**✅ Step 5b.** Initialize the Schema with `cqlsh`
+#### ✅ 5b) Initialize the Schema with `cqlsh`
 
 ```sql
 CREATE TABLE IF NOT EXISTS socialmedia (
@@ -237,7 +240,7 @@ You can also create the table by running a CQL script
 astra db cqlsh workshops -k machine_learning -f ./initialize/create_tables.cql
 ```
 
-**✅ Step 5c.** Populate table `socialmedia`
+#### ✅ 5c) Populate table `socialmedia`
 
 ```
 astra db dsbulk workshops \
@@ -258,7 +261,7 @@ astra db dsbulk workshops \
 > 6,622 |      0 |    139 | 1,131.25 | 4,294.97 | 13,555.99 |    1.00
 > ```
 
-#### ✅ 5d. Populate table `wines`
+#### ✅ 5d) Populate table `wines`
 
 ```
 astra db dsbulk workshops \
@@ -280,7 +283,7 @@ astra db dsbulk workshops \
 > ```
 
 
-**✅ Step 5e.** Populate table `movieratings`
+#### ✅ 5e) Populate table `movieratings`
 
 ```
 astra db dsbulk workshops \
@@ -294,7 +297,7 @@ astra db dsbulk workshops \
   -t movieratings
 ```
 
-**✅ Step 5f.** Populate table `movies`
+#### ✅ 5f) Populate table `movies`
 
 ```
 astra db dsbulk workshops \
@@ -304,11 +307,11 @@ astra db dsbulk workshops \
   -delim ',' \
   -m "movieid,title,genres" \
   -header false \
-  -k "${ASTRA_DB_KEYSPACE}" \
-  -t movies```
+  -k "machine_learning" \
+  -t movies
 ```
 
-**✅ Step 5g.** Populate table `jokes`
+#### ✅ 5g) Populate table `jokes`
 
 ```
 astra db dsbulk workshops \
@@ -326,7 +329,7 @@ astra db dsbulk workshops \
 
 Jupyter notebook is a web based application that we will use to demonstrate the different algorithms
 
-#### ✅ 6a. Download credentials as a `zip` for jupyter
+#### ✅ 6a) Download credentials as a `zip` for jupyter
 
 ```
 astra db workshops download-scb -f ./jupyter/secureconnect/secure-connect-workshops.zip
