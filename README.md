@@ -251,7 +251,14 @@ astra db dsbulk workshops \
   -t socialmedia
 ```
 
-**✅ Step 5d.** Populate table `wines`
+> 🖥️ Output
+>
+> ```
+> total | failed | rows/s |    p50ms |    p99ms |    p999ms | batches
+> 6,622 |      0 |    139 | 1,131.25 | 4,294.97 | 13,555.99 |    1.00
+> ```
+
+#### ✅ 5d. Populate table `wines`
 
 ```
 astra db dsbulk workshops \
@@ -264,6 +271,14 @@ astra db dsbulk workshops \
   -k "machine_learning" \
   -t wines
 ```
+
+> 🖥️ Output
+>
+> ```
+> total | failed | rows/s |    p50ms |    p99ms |   p999ms | batches
+> 6,497 |      0 |    166 | 1,131.18 | 3,892.31 | 6,442.45 |    1.00
+> ```
+
 
 **✅ Step 5e.** Populate table `movieratings`
 
@@ -311,7 +326,7 @@ astra db dsbulk workshops \
 
 Jupyter notebook is a web based application that we will use to demonstrate the different algorithms
 
-**✅ Step 6a.** Download credentials as a `zip` for jupyter
+#### ✅ 6a. Download credentials as a `zip` for jupyter
 
 ```
 astra db workshops download-scb -f ./jupyter/secureconnect/secure-connect-workshops.zip
@@ -325,7 +340,7 @@ astra db workshops download-scb -d ./jupyter/secureconnect/
 
 And then rename the file you want to use case `secure-connect-workshops.zip`
 
-**✅ Step 6b.** Init environment variables
+#### ✅ 6b. Init environment variables
 
 ```
 export ASTRA_DB_CLIENT_ID=token
@@ -334,11 +349,18 @@ export ASTRA_DB_SECURE_BUNDLE_PATH="./secureconnect/secure-connect-workshops.zip
 export ASTRA_DB_KEYSPACE="machine_learning"
 ```
 
-**✅ Step 6c.** Start Jupyter with Docker
+#### ✅ Step 6c. Start Jupyter with Docker
 
 ```
 docker-compose up -d
 ```
+
+> 🖥️ Output
+>
+> ```
+>  [+] Running 1/1
+>  ⠿ Container workshop-introduction-to-machine-learning-jupyter-1  Started 0.3s
+> ```
 
 **✅ Step 6d.** Signin to Jupyter
 
