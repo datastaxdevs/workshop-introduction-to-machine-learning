@@ -1,5 +1,7 @@
 # Machine Learning with Apache Spark & Cassandra
 
+![Workshop cover](images/intro-to-ML-cover.png)
+
 Welcome to the **Introduction to machine learning** workshop! In this two-hour workshop, we show you how you can leverage the distributed `NoSQL database Apache Cassandra™` to save your datasets, train you models and predict at scale.
 
 Want to learn about the awesomeness of distributed databases and computational systems?
@@ -24,8 +26,6 @@ It doesn't matter if you join our workshop live or you prefer to do at your own 
 8. [What's NEXT](#8-whats-next)
 
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
-
-![Workshop cover](images/intro-to-ML-cover.png)
 
 ## 1. Objectives
 
