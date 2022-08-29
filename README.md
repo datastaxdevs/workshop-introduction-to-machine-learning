@@ -125,15 +125,7 @@ cd workshop-introduction-to-machine-learning
 curl -Ls "https://dtsx.io/get-astra-cli"
 ```
 
-> You may need to use some custom IP instead of `localhost` if you
-> use docker-for-mac, docker-for-windows or similar installation.
-
-> _Known Issue_: in some cases executing the exercises may lead to memory issues, especially
-> on weaker or non-Linux machines due to docker limitations on memory. If you have any
-> issues with exercises after the first few, try to clean up and start again
-> `docker-compose kill && docker-compose down && docker-compose up -d`.
-> You may need to repeat steps of the notebook you were working on.
-
+- Close the terminal and open a new one in the folder.
 </details>
 
 .
@@ -155,7 +147,7 @@ astra db create workshops -k machine_learning --if-not-exist
 
 **✅ Step 4g.** Check the status of database `workshops`:
 ```
-astra db status workshops
+ astra db get workshops | grep Status | cut -b 28-45
 ```
 
 **✅ Step 4h.** If database `workshops` exists and has status `HIBERNATED`, resume the database. 
@@ -235,10 +227,12 @@ CREATE TABLE IF NOT EXISTS jokes (
     PRIMARY KEY (userid, jokeid)
 );
 
+describe tables;
+
 quit;
 ```
 
-You can also do simply run a file:
+You can also create the table by running a CQL script
 ```
 astra db cqlsh workshops -k machine_learning -f ./initialize/create_tables.cql
 ```
