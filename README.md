@@ -240,7 +240,7 @@ astra db cqlsh workshops -k machine_learning -f ./initialize/create_tables.cql
 **✅ Step 5c.** Populate table `socialmedia`
 
 ```
-astra db dsbulk workshops
+astra db dsbulk workshops \
   load \
   -url jupyter/data/socialMedia.csv \
   -c csv \
@@ -254,7 +254,7 @@ astra db dsbulk workshops
 **✅ Step 5d.** Populate table `wines`
 
 ```
-astra db dsbulk workshops
+astra db dsbulk workshops \
   load \
   -url jupyter/data/winequality.csv \
   -c csv \
@@ -268,7 +268,7 @@ astra db dsbulk workshops
 **✅ Step 5e.** Populate table `movieratings`
 
 ```
-astra db dsbulk workshops
+astra db dsbulk workshops \
   load \
   -url jupyter/data/ratings.csv \
   -c csv \
@@ -282,7 +282,7 @@ astra db dsbulk workshops
 **✅ Step 5f.** Populate table `movies`
 
 ```
-astra db dsbulk workshops
+astra db dsbulk workshops \
   load \
   -url jupyter/data/movies.csv \
   -c csv \
@@ -296,7 +296,7 @@ astra db dsbulk workshops
 **✅ Step 5g.** Populate table `jokes`
 
 ```
-astra db dsbulk workshops
+astra db dsbulk workshops \
   load \
   -url jupyter/data/jester_ratings3.csv \
   -c csv \
