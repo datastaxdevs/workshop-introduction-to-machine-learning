@@ -1,4 +1,3 @@
-
 # Machine Learning with Apache Spark & Cassandra
 
 Welcome to the **Introduction to machine learning** workshop! In this two-hour workshop, we show you how you can leverage the distributed `NoSQL database Apache Cassandra™` to save your datasets, train you models and predict at scale.
@@ -181,7 +180,37 @@ and, when it finishes, move on to the next.
 
 ## 7. Homework
 
-_(coming soon)_
+_Now it's your turn!_
+
+Try to improve the accuracy (as computed on the test set) of the
+Random Forest classification model by tweaking its parameters.
+You will need to re-train the model and re-evaluate the accuracy at each try.
+
+> Tip: look at the [documentation](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.classification.RandomForestClassifier.html)
+> as a starting point, to see what options there are, pyspark.ml.classification.RandomForestClassifier).
+
+You can proceed by selecting some parameters (such as `numTrees` or `maxDepth`),
+increase and decrease their value a bit, and compare the accuracy with the
+"baseline" result from the model you started with.
+Ideally you should change one parameter at a time,
+keeping all others the same as the "baseline".
+Is the model accuracy more sensitive to `numTrees` or `maxDepth`?
+
+<img src="images/intro-ml-badge.png?raw=true" width="150" align="right" />
+
+If you really want to get serious, you could even automate this
+_hyperparameter search_ in the code itself - possibly on a _grid_ of choices
+for the parameters you want to test, such as:
+```
+{numTrees in [5, 10, 20]} x {maxDepth in [2, 5, 10]} x { ... other parameters ... } ...
+```
+
+**Provide a screenshot of an improved choice of parameters, yielding an
+accuracy higher than the "baseline"**
+(Note: an improvement of at least 0.05 is possible).
+
+Go to [this form](https://dtsx.io/homework-intro-ml) to submit your homework, give us a few days to review it,
+and wait for your well-deserved "Intro to Machine Learning" badge!
 
 ## 8. What's NEXT
 
@@ -192,8 +221,6 @@ We've just scratched the surface of what you can do with
 
 Go take a look at [DataStax for Developers](https://www.datastax.com/dev) to see what else is possible.
 There's plenty to dig into!
-
-<img src="images/intro-ml-badge.png?raw=true" width="150" align="right" />
 
 **Congratulations: you made to the end of today's workshop.**
 
