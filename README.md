@@ -97,15 +97,15 @@ we have you covered. In this repository, you'll find everything you need for thi
 
 ## 4. Create your Astra DB instance
 
-#### ✅ 4a. Sign in (or sign up) to your Astra account
+#### ✅ 4a) Sign in (or sign up) to your Astra account
 
 <a href="https://astra.dev/yt-8-31"><img src="images/create_astra_db_button.png?raw=true" /></a>
 
-#### ✅ 4b. Create an application token by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a>. Skip this step is you already have a token. You can reuse the same token in our other workshops, too.
+#### ✅ 4b) Create an application token by following <a href="https://awesome-astra.github.io/docs/pages/astra/create-token/" target="_blank">these instructions</a>. Skip this step is you already have a token. You can reuse the same token in our other workshops, too.
 
 > Your token should look like: `AstraCS:....`
 
-#### ✅ 4c. Start Gitpod
+#### ✅ 4c) Start Gitpod
 
 We suggest to use `#Gitpod` but you can also run everything locally.
 
@@ -129,49 +129,146 @@ curl -Ls "https://dtsx.io/get-astra-cli"
 </details>
 
 .
-
-#### ✅ 4d. Setup Astra CLI by providing your application token
+#### ✅ 4d) Setup Astra CLI by providing your application token
 
 ```
 astra setup
 ```
 
-#### ✅ 4e.List your existing Astra DB databases:
+> 🖥️ Output
+>
+> ```
+> +-------------------------------+
+> +-     Astra CLI SETUP         -+
+> +-------------------------------+
+> 
+> Welcome to Astra Cli. We will guide you to start.
+> 
+> [Astra Setup]
+> To use the cli you need to:
+ > • Create an Astra account on : https://astra.datastax.com
+ > • Create an Authentication token following: https://dtsx.io/create-astra-token
+> 
+> [Cli Setup]
+> You will be asked to enter your token, it will be saved locally in ~/. astrarc
+> 
+> • Enter your token (starting with AstraCS) : 
+> AstraCS:AAAAAA
+> [ INFO ] - Configuration Saved.
+> 
+> 
+> [cedrick.lunven@gmail.com]
+> ASTRA_DB_APPLICATION_TOKEN=AstraCS:AAAAAAAA
+> 
+> [What's NEXT ?]
+> You are all set.(configuration is stored in ~/.astrarc) You can now:
+>    • Use any command, 'astra help' will get you the list
+>    • Try with 'astra db list'
+>    • Enter interactive mode using 'astra'
+> 
+> Happy Coding !
+> ```
+
+
+#### ✅ 4e) List your existing Astra DB databases:
 
 ```
 astra db list
 ```
+> 🖥️ Output
+>
+> ```
+> +---------------------+--------------------------------------+---------------------+----------------+
+> | Name                | id                                   | Default Region      | Status         |
+> +---------------------+--------------------------------------+---------------------+----------------+
+> | workshops           | bb61cfd6-2702-4b19-97b6-3b89a04c9be7 | us-east-1           | ACTIVE         |
+> +---------------------+--------------------------------------+---------------------+----------------+
+> ```
 
-#### ✅ 4f. Create database `workshops` and keyspace `machine_learning` if they do not exist:
-
-```
-astra db create workshops -k machine_learning --if-not-exist
-```
-
-#### ✅ 4g) Check the status of database `workshops`:
-```
- astra db get workshops | grep Status | cut -b 28-45
-```
-
-#### ✅ 4h) If database `workshops` exists and has status `HIBERNATED`, resume the database. 
+#### ✅ 4f) If a database `workshops` exists and has status `HIBERNATED`, resume the database.
 
 ```
 astra db resume workshops
 ```
 
-#### ✅ 4i) If database `workshops` has status `RESUMING` or `PENDING`, **wait until the status becomes `ACTIVE`**:
+> 🖥️ Output
+>
+> ```
+> [WARN ] - Database 'workshops' is already ACTIVE
+> ```
+
+#### ✅ 4g) Create database `workshops` and keyspace `machine_learning` if they do not exist:
+
+```
+astra db create workshops -k machine_learning --if-not-exist --wait
+```
+
+Let's decompose the command:
+- `db create` is the operation we are doing
+- `workshops` is the name of the database, our argument
+- `-k machine_learning` create the keyspace with the name `machine_learning`
+- `--if-not-exist` create database and keyspaces if not exist
+- `--wait` enable a blocking command to stop when the db is ready
+
+#### ✅ 4h) Check the status of database `workshops`
+
+```
+astra db status workshops
+```
+
+> 🖥️ Output
+>
+> ```
+> [ INFO ] - Database 'workshops' has status 'ACTIVE'
+> ```
+
+#### ✅ 4i) Get the informations for your database including the keyspace list
+
 ```
 astra db get workshops
 ```
+
+> 🖥️ Output
+>
+> ```
+> +------------------------+-----------------------------------------+
+> | Attribute              | Value                                   |
+> +------------------------+-----------------------------------------+
+> | Name                   | workshops                               |
+> | id                     | bb61cfd6-2702-4b19-97b6-3b89a04c9be7    |
+> | Status                 | ACTIVE                                  |
+> | Default Cloud Provider | AWS                                     |
+> | Default Region         | us-east-1                               |
+> | Default Keyspace       | machine_learning                        |
+> | Creation Time          | 2022-08-29T06:13:06Z                    |
+> |                        |                                         |
+> | Keyspaces              | [0] machine_learning                    |
+> |                        |                                         |
+> |                        |                                         |
+> | Regions                | [0] us-east-1                           |
+> |                        |                                         |
+> +------------------------+-----------------------------------------+
+> ```
 
 ## 5. Setup your Astra DB instance
 
 #### ✅ 5a) Start the CQL shell and connect to database `workshops` and keyspace `machine_learning`:
 
 ```
-clear
 astra db cqlsh workshops -k machine_learning
 ```
+
+> 🖥️ Output
+>
+> ```
+> [ INFO ] - Cqlsh has been installed
+> 
+> Cqlsh is starting please wait for connection establishment...
+> Connected to cndb at 127.0.0.1:9042.
+> [cqlsh 6.8.0 | Cassandra 4.0.0.6816 | CQL spec 3.4.5 | Native protocol v4]
+> Use HELP for help.
+> token@cqlsh:machine_learning> 
+> ```
 
 #### ✅ 5b) Initialize the Schema with `cqlsh`
 
@@ -235,9 +332,9 @@ describe tables;
 quit;
 ```
 
-You can also create the table by running a CQL script
+You can also create the table by running a CQL script:
 ```
-astra db cqlsh workshops -k machine_learning -f ./initialize/create_tables.cql
+astra db cqlsh workshops -k machine_learning -f /initialize/create_tables.cql
 ```
 
 #### ✅ 5c) Populate table `socialmedia`
@@ -257,8 +354,10 @@ astra db dsbulk workshops \
 > 🖥️ Output
 >
 > ```
-> total | failed | rows/s |    p50ms |    p99ms |    p999ms | batches
-> 6,622 |      0 |    139 | 1,131.25 | 4,294.97 | 13,555.99 |    1.00
+> DSBulk is starting please wait ...
+> 
+> total | failed | rows/s | p50ms |  p99ms | p999ms | batches
+> 6,622 |      0 |  2,308 | 69.28 | 103.81 | 132.12 |    1.00
 > ```
 
 #### ✅ 5d) Populate table `wines`
@@ -278,8 +377,10 @@ astra db dsbulk workshops \
 > 🖥️ Output
 >
 > ```
-> total | failed | rows/s |    p50ms |    p99ms |   p999ms | batches
-> 6,497 |      0 |    166 | 1,131.18 | 3,892.31 | 6,442.45 |    1.00
+> DSBulk is starting please wait ...
+> 
+> total | failed | rows/s | p50ms |  p99ms | p999ms | batches
+> 6,497 |      0 |  2,071 | 80.41 | 136.31 | 154.14 |    1.00
 > ```
 
 
@@ -297,6 +398,15 @@ astra db dsbulk workshops \
   -t movieratings
 ```
 
+> 🖥️ Output
+>
+> ```
+> DSBulk is starting please wait ...
+> 
+>  total | failed | rows/s | p50ms |  p99ms | p999ms | batches
+> 100,000 |      0 |  8,939 | 67.30 | 101.71 | 158.33 |   27.35
+> ```
+
 #### ✅ 5f) Populate table `movies`
 
 ```
@@ -311,9 +421,14 @@ astra db dsbulk workshops \
   -t movies
 ```
 
-total | failed | rows/s |  p50ms |    p99ms |    p999ms | batches
-27,278 |      0 |    272 | 660.79 | 4,731.17 | 11,811.16 |    1.00
-
+> 🖥️ Output
+>
+> ```
+> DSBulk is starting please wait ...
+> 
+> total | failed | rows/s | p50ms |  p99ms | p999ms | batches
+> 27,278 |      0 |  3,284 | 69.67 | 106.43 | 141.56 |    1.00
+> ```
 
 #### ✅ 5g) Populate table `jokes`
 
@@ -329,6 +444,15 @@ astra db dsbulk workshops \
   -t jokes
 ```
 
+> 🖥️ Output
+>
+> ```
+> DSBulk is starting please wait ...
+> 
+> total | failed | rows/s | p50ms |  p99ms | p999ms | batches
+> 10,000 |      0 |  7,876 | 79.31 | 127.40 | 149.95 |   20.66
+> ```
+
 ## 6. Setup Jupyter notebook
 
 Jupyter notebook is a web based application that we will use to demonstrate the different algorithms
@@ -336,8 +460,18 @@ Jupyter notebook is a web based application that we will use to demonstrate the 
 #### ✅ 6a) Download credentials as a `zip` for jupyter
 
 ```
-astra db workshops download-scb -f ./jupyter/secureconnect/secure-connect-workshops.zip
+mkdir ./jupyter/secureconnect/
+astra db download-scb workshops -f ./jupyter/secureconnect/secure-connect-workshops.zip
+ ls -l ./jupyter/secureconnect/
 ```
+
+> 🖥️ Output
+>
+> ```
+> total 16
+> -rw-r--r-- 1 gitpod gitpod 12334 Aug 30 13:54 secure-connect-workshops.zip
+> ```
+
 
 > You might get an error if your database contains multiple regions (not on the free tier). If so please, use the following command instead
 > ```
@@ -345,16 +479,21 @@ astra db workshops download-scb -f ./jupyter/secureconnect/secure-connect-worksh
 > ```
 > And then rename the file you want to use case `secure-connect-workshops.zip`
 
-#### ✅ 6b. Init environment variables
+#### ✅ 6b) Init environment variables
 
 ```
-export ASTRA_DB_CLIENT_ID=token
-export ASTRA_DB_CLIENT_SECRET=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
-export ASTRA_DB_SECURE_BUNDLE_PATH="./secureconnect/secure-connect-workshops.zip"
-export ASTRA_DB_KEYSPACE="machine_learning"
+cd jupyter
+touch .env
+echo "export ASTRA_DB_CLIENT_ID=token" >> .env
+ASTRA_DB_CLIENT_SECRET=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
+echo "export ASTRA_DB_CLIENT_SECRET=${ASTRA_DB_CLIENT_SECRET}" >> .env
+echo "export ASTRA_DB_SECURE_BUNDLE_PATH=./secureconnect/secure-connect-workshops.zip" >> .env
+echo "export ASTRA_DB_KEYSPACE=machine_learning" >> .env
+cat .env
+cd ..
 ```
 
-#### ✅ Step 6c. Start Jupyter with Docker
+#### ✅ Step 6c) Start Jupyter with Docker
 
 ```
 docker-compose up -d
@@ -367,7 +506,20 @@ docker-compose up -d
 >  ⠿ Container workshop-introduction-to-machine-learning-jupyter-1  Started 0.3s
 > ```
 
-**✅ Step 6d.** Signin to Jupyter
+The container was already running
+
+```
+docker-compose ps
+```
+
+> 🖥️ Output
+>
+> ```
+> NAME                                                  COMMAND                  SERVICE             STATUS              PORTS
+> workshop-introduction-to-machine-learning-jupyter-1   "tini -g -- start-no…"   jupyter             running             0.0.0.0:8888->8888/tcp, :::8888->8888/tcp
+> ```
+
+#### ✅ Step 6d) Signin to Jupyter
 
 - run the following 
 
