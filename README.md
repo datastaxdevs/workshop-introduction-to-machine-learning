@@ -311,6 +311,10 @@ astra db dsbulk workshops \
   -t movies
 ```
 
+total | failed | rows/s |  p50ms |    p99ms |    p999ms | batches
+27,278 |      0 |    272 | 660.79 | 4,731.17 | 11,811.16 |    1.00
+
+
 #### ✅ 5g) Populate table `jokes`
 
 ```
