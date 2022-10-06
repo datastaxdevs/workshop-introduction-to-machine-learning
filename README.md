@@ -115,6 +115,13 @@ While the database is being created, you will also get a
 [**Security token**](https://awesome-astra.github.io/docs/pages/astra/create-token/#b-prerequisites):
 save it somewhere safe, since you'll need it later during setup.
 
+> **⚠️ Important**
+> ```
+> The instructor will show you on screen how to create a token 
+> but will have to destroy to token immediately for security reasons.
+> ```
+
+
 The database status will change from `Pending` to `Active` when the database is ready, this will only take 2-3 minutes. You will also receive an email when it is ready.
 
 > If you already had the database, you can still create a new token: see [here](https://awesome-astra.github.io/docs/pages/astra/create-token/#b-prerequisites).
