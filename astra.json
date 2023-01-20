@@ -13,7 +13,7 @@
     { "name": "python" },
     { "name":"jupyter" },
     { "name":"cassandra" },
-    { "name":"spark" },
+    { "name":"spark" }
   ],
   "category": "workshop",
   "usecases": ["Machine Learning"]
